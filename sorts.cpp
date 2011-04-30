@@ -31,15 +31,14 @@ int main(int argc,char *argv[])
 	mArray<double> test(5,pa);
 	double sum=0;
 	long i;
-	
-	for (i=0;i < 10000000;i++) {
-		if (!i%10000) cout << i << endl;
+	long FTimes = 10000000;
+	for (i=0;i < FTimes;i++) {
 		test.nuke();
 		test.resetD(5,pa);
 		sum += test.foldRight(fadd);
-		cout << "\r what the f " << i << " sum " << sum << endl;
+		if (!(i%1000000)) cout << "\r what the f " << i << " sum " << sum << endl;
 	}
-	cout << "test " << test << " sum " << sum << endl;
+	cout << "test " << test << " folded sum " << FTimes << " times " << sum << endl;
 /*	double *pa = {0,1,2,3,5.5};
 	double *pb = {9,12,77.4,sqrt(16)};
 	mArray<double> a(5,pa);
