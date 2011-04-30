@@ -35,7 +35,7 @@ temp 1 val 10
 
 curried output f10(f7(f2(f1(val)))) or ((val+1)*2-7)/10 = 0.1
 
-
+-----------------------------------------------------------------------------------------------------------------
 nevermind that sorts does no sorting... yet.
 
 g++ sorts.cpp -o sorts
