@@ -1,5 +1,6 @@
 #include <stdarg.h>
 #include <math.h>
+
 #include "mArray.h"
 
 template <class T>
@@ -24,7 +25,7 @@ mArray<T> &qsort(mArray<T> &a) {
 
 int main(int argc,char *argv[])
 {
-	Fptr2 fadd = &add<double>;
+	Fptr2 fadd = &addTwo<double>;
 	
 	double pa[] = {0,1,2,3,5.5};
 	mArray<double> test(5,pa);
