@@ -30,38 +30,32 @@ void qsort(mArray<T> &a) {
 };
 
 
-template<class T>
-void swapem(T &left,T &right) {
-	T temp = left;
-	left = right;
-	right = temp;
-}
-
-// this one's fast as it uses the memory of the original array
+// fast in memory of the original array
 template <class T>
 void qsort(mArray<T> &a,long start,long end) {
 	long len = end - start+1;
 	
 	if (len <= 1) return;
+
 	long pind = len/2+start;
-	
 	T piv = a[pind];
-	long i = start;
-	long j = end;
-	while ((j-i) > 2) {
-		if (a[i] > piv && a[j] < piv) {
-			swapem<T>(a[i],a[j]);
-			i++;
-			j--;
+	long si = start,i;
+
+	swap<T>(a[pind],a[end]);
+	pind = end;
+//	cout << "Piv " << piv << endl;
+	for (i=start;i < end;i++) {
+//		cout << i << " before a " << a << endl;
+		if (a[i] < piv) {
+//			cout << "swapping left " << a[si] << " and current " << a[i] << " si ";
+			swap<T>(a[i],a[si]);
+			si++;
+//			cout << si << endl;
 		}
-		else {
-			if (a[i] < piv) i++;
-			if (a[j] > piv) j--;
-		}
+//		cout << i << " after  a " << a << endl;
 	}
-	// one last swap if needed
-	if (a[i] > piv) swapem<T>(a[i],a[pind]);
-	else if (a[j] < piv) swapem<T>(a[j],a[pind]);
+	swap<T>(a[si],a[pind]);
+	pind = si;
 	qsort(a,start,pind-1);
 	qsort(a,pind+1,end);
 };
@@ -74,6 +68,8 @@ int main(int argc,char *argv[])
 	double pb[] = {9,112,8,77.4,4};
 	mArray<double> a(5,pa);
 	mArray<double> b(5,pb);
+
+	cout << "testing concatentation\n";
 	mArray<double> c = cat<double>(2,(vp)&a,(vp)&b);
 	cout << "c cat (...) " << c << endl;
 	
@@ -84,6 +80,9 @@ int main(int argc,char *argv[])
 	mArray<double> d = cat<double>(dat);
 	cout << "d cat (arr) " << d << endl;
 	
+	cout << "\n-------------------------------------------------------------------------\n";
+	long FTimes = 1000000;
+	cout << "folding a " << FTimes << " times\n";
   	// test folding	
 	Fptr2 fadd = &addTwo<double>;
 	
@@ -91,7 +90,6 @@ int main(int argc,char *argv[])
 	mArray<double> test(5,pc);
 	double sum=0;
 	long i;
-	long FTimes = 1000000;
 	for (i=0;i < FTimes;i++) {
 		test.nuke();
 		test.resetD(5,pc);
@@ -99,14 +97,31 @@ int main(int argc,char *argv[])
 		if (!(i%100000)) cout << "\r what the f " << i << " sum " << sum << endl;
 	}
 	cout << "test " << test << " folded sum " << FTimes << " times " << sum << endl;
+	
+	cout << "\n-------------------------------------------------------------------------\n";
+	cout << "in place sorting " << FTimes << " arrays " << endl;
+//	double da[] = {4,2,3};
+//	d.resetD(3,da);
 	RunTime timer;
 	for (i=0;i < FTimes;i++) {
 		mArray<double> sorted = d;
 		qsort(sorted,0,sorted.size()-1);
 		if (!(i%100000)) {
 			cout << "sorted " << sorted << endl;
-			cout << timer << endl;
+			cout << "in place method: " << timer << endl;
 		}
 	}
+	cout << "\n-------------------------------------------------------------------------\n";
+	cout << "temporary lists sorting " << FTimes << " arrays " << endl;
+	RunTime timer2;
+	for (i=0;i < FTimes;i++) {
+		mArray<double> sorted = d;
+		qsort(sorted);
+		if (!(i%100000)) {
+			cout << "sorted " << sorted << endl;
+			cout << "temporary lists method: " << timer << endl;
+		}
+	}
+
 	
 }
