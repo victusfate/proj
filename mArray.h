@@ -118,7 +118,7 @@ public:
 		else { cout << "mArray operator[] ind "<< i << " dim " << m_n << endl; exit(-1); }
 	};
 	
-	void push(const T& val){
+	mArray<T> &push(const T& val){
 		if ( (m_n+1) <= m_cap) {
 			m_p[m_n] = val;
 			m_n = m_n+1;
@@ -133,24 +133,47 @@ public:
 			copy(temp.size(),temp.ptr()); 
 			m_p[nsize-1] = val;
 		}
+		return *this;
 	};
+	mArray<T> &append(const mArray<T> &r){
+		if ( (m_n+r.m_n) <= m_cap) {
+			long i;
+			for (i=0;i < r.m_n;i++) {
+				m_p[m_n+i] = r.m_p[i];
+			}
+			m_n = m_n+r.m_n;
+			
+		}
+		else {
+			mArray<T> temp = *this;
+			resetD(m_n+r.m_n);
+			long i;
+			for (i=0;i < m_n;i++) {
+				T val;
+				if (i < temp.m_n) val = temp.m_p[i];
+				else val = r.m_p[i-m_n];
+				m_p[i] = val;
+			}
+		}
+		return *this;
+	}
 	
 	long size() const { return m_n; }
+	long capacity() const { return m_cap; }
 
 	T *ptr() { return m_p; }
-
 	const T *ptr() const { return m_p; }
 	
 	const mArray<T>& operator=(const mArray<T> &r) {
-		if (m_cap >= r.size()) {
-			m_n = r.size();
-			copy(r.size(),r.ptr());
+		if (m_cap >= r.m_n) {
+			m_n = r.m_n;
+			copy(r.m_n,r.m_p);
 		}
 		else {
 			// nuke local mem, spawn new mem and copy data
 			nuke();
-			spawn(r.size(),r.size());
-			copy(r.size(),r.ptr());
+			spawn(r.m_n,r.m_n);
+			copy(r.m_n,r.m_p);
 		}
 		return *this;
 	}
@@ -173,18 +196,13 @@ ostream& operator<<(ostream &os,const mArray<T>& m) {
 	return os;
 }
 
-
-
+// concatenate arrays together, or flatten
 template <class T>
-mArray<T> cat(long n,...) {
+mArray<T> cat(const mArray< mArray<T> > &arrs) {
 	long out=0,i,j;
-	mArray< const mArray<T>& > arrs(n);
-	va_list a;
-	for(i=0;i < n;i++) {
-	    arrs[i] = va_arg( a, mArray<T>& );
+	for(i=0;i < arrs.size();i++) {
 		out += arrs[i].size();
 	}
-	va_end(a);
 
 	mArray<T> fin(out);
 
@@ -192,10 +210,23 @@ mArray<T> cat(long n,...) {
 	for(i=0;i < arrs.size();i++) {
 	    const mArray<T>& m = arrs[i];
 		for (j=0;j < m.size();j++) {
-			fin[cind] = m[j];
+			fin[cind++] = m[j];
 		}
 	}
 	return fin;
+}
+
+template <class T>
+mArray<T> cat(long n,...) {
+	long out=0,i,j;
+	mArray< mArray<T> > arrs(n);
+	va_list a;
+	va_start(a,n);
+	for(i=0;i < n;i++) {
+		arrs[i] = *(mArray<T> *)va_arg( a, vp);
+	}
+	va_end(a);
+	return cat<T>(arrs);
 }
 
 #endif

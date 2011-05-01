@@ -26,9 +26,39 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>27</integer>
-				<key>line</key>
 				<integer>6</integer>
+				<key>line</key>
+				<integer>57</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>6</integer>
+				<key>line</key>
+				<integer>57</integer>
+			</dict>
+		</dict>
+		<key>README.md</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>113</integer>
+				<key>line</key>
+				<integer>37</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -40,14 +70,30 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>14</integer>
+				<integer>31</integer>
 				<key>line</key>
-				<integer>25</integer>
+				<integer>12</integer>
 			</dict>
+			<key>columnSelection</key>
+			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>1</integer>
+				<key>line</key>
+				<integer>29</integer>
+			</dict>
 		</dict>
 		<key>curry.h</key>
 		<dict>
@@ -56,26 +102,42 @@
 				<key>column</key>
 				<integer>0</integer>
 				<key>line</key>
-				<integer>57</integer>
+				<integer>8</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>18</integer>
+			<integer>0</integer>
 		</dict>
 		<key>mArray.h</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>16</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>6</integer>
+				<integer>201</integer>
 			</dict>
+			<key>columnSelection</key>
+			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>0</integer>
+			<integer>133</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>201</integer>
+			</dict>
 		</dict>
 		<key>qsort_from_web.cpp</key>
 		<dict>
@@ -96,14 +158,30 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>53</integer>
+				<integer>17</integer>
 				<key>line</key>
-				<integer>38</integer>
+				<integer>5</integer>
 			</dict>
+			<key>columnSelection</key>
+			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>1</integer>
+				<key>line</key>
+				<integer>47</integer>
+			</dict>
 		</dict>
 	</dict>
 	<key>openDocuments</key>
@@ -111,6 +189,7 @@
 		<string>mArray.h</string>
 		<string>Fptr.h</string>
 		<string>curry.cpp</string>
+		<string>README.md</string>
 		<string>qsort_from_web.cpp</string>
 		<string>curry.h</string>
 		<string>sorts.cpp</string>
@@ -118,6 +197,6 @@
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{1541, 103}, {891, 1253}}</string>
+	<string>{{994, 109}, {891, 1253}}</string>
 </dict>
 </plist>
