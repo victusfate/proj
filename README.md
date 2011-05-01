@@ -70,7 +70,8 @@ folding a 1000000 times
 test 0	1	2	3	5.5 folded sum 1000000 times 1.15e+07
 
 -------------------------------------------------------------------------
-`in place sorting 1000000 arrays 
+<pre>
+in place sorting 1000000 arrays 
 sorted 0	2	4	4.3	5.5	8	9	11.6	77.4	112
 in place method: 0.000
 sorted 0	2	4	4.3	5.5	8	9	11.6	77.4	112
@@ -90,10 +91,11 @@ in place method: 0.680
 sorted 0	2	4	4.3	5.5	8	9	11.6	77.4	112
 in place method: 0.777
 sorted 0	2	4	4.3	5.5	8	9	11.6	77.4	112
-in place method: 0.874`
-
+in place method: 0.874
+</pre>
 -------------------------------------------------------------------------
-`temporary lists sorting 1000000 arrays 
+<pre>
+temporary lists sorting 1000000 arrays 
 sorted 0	2	4	4.3	5.5	8	9	11.6	77.4	112
 temporary lists method: 0.972
 sorted 0	2	4	4.3	5.5	8	9	11.6	77.4	112
@@ -113,4 +115,5 @@ temporary lists method: 3.970
 sorted 0	2	4	4.3	5.5	8	9	11.6	77.4	112
 temporary lists method: 4.399
 sorted 0	2	4	4.3	5.5	8	9	11.6	77.4	112
-temporary lists method: 4.828`
+temporary lists method: 4.828
+</pre>
