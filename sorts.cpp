@@ -100,7 +100,7 @@ int main(int argc,char *argv[])
 	
 	cout << "\n-------------------------------------------------------------------------\n";
 	cout << "in place sorting " << FTimes << " arrays " << endl;
-//	double da[] = {4,2,3};
+//	double da[] = {4,2,3}; // thanks nddp for a simple test case (http://www.reddit.com/user/nddp)
 //	d.resetD(3,da);
 	RunTime timer;
 	for (i=0;i < FTimes;i++) {
