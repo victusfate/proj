@@ -37,6 +37,7 @@ void swapem(T &left,T &right) {
 	right = temp;
 }
 
+// this one's fast as it uses the memory of the original array
 template <class T>
 void qsort(mArray<T> &a,long start,long end) {
 	long len = end - start+1;
@@ -102,7 +103,6 @@ int main(int argc,char *argv[])
 	for (i=0;i < FTimes;i++) {
 		mArray<double> sorted = d;
 		qsort(sorted,0,sorted.size()-1);
-//		mArray<double> sorted = qsort(d);
 		if (!(i%100000)) {
 			cout << "sorted " << sorted << endl;
 			cout << timer << endl;
