@@ -38,7 +38,7 @@ public:
 	};
 
 	// free up and contract marray to nil
-	void nuke() {
+	void nuke() { // Linux Jon suggest clear, make sure there's no surprises for stl folks
 		if (m_p) {
 			delete [] m_p;
 			m_p = NULL;
@@ -165,15 +165,17 @@ public:
 	const T *ptr() const { return m_p; }
 	
 	const mArray<T>& operator=(const mArray<T> &r) {
-		if (m_cap >= r.m_n) {
-			m_n = r.m_n;
-			copy(r.m_n,r.m_p);
-		}
-		else {
-			// nuke local mem, spawn new mem and copy data
-			nuke();
-			spawn(r.m_n,r.m_n);
-			copy(r.m_n,r.m_p);
+		if (this != &r) { 
+			if (m_cap >= r.m_n) {
+				m_n = r.m_n;
+				copy(r.m_n,r.m_p);
+			}
+			else {
+				// nuke local mem, spawn new mem and copy data
+				nuke();
+				spawn(r.m_n,r.m_n);
+				copy(r.m_n,r.m_p);
+			}
 		}
 		return *this;
 	}
