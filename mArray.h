@@ -33,7 +33,7 @@ public:
 	}
 
 	// mArray allocates and deletes its own memory
-	~mArray() { 
+	virtual ~mArray() { 
 		nuke();
 	};
 
