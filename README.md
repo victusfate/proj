@@ -117,3 +117,31 @@ temporary lists method: 4.399
 sorted 0	2	4	4.3	5.5	8	9	11.6	77.4	112
 temporary lists method: 4.828
 </pre>
+
+
+<h1>Random number generator speed tests</h1>
+Thanks to <a href="http://www.johndcook.com/cpp_random_number_generation.html">John D. Cook</a>
+
+to build on *nix:
+<pre>g++ -O3 -o testRNG testRNG.cpp SimpleRNG.cpp -lm</pre>
+
+Quality test:
+<pre>
+Mark-Essels-iMac:proj messel$ ./testRNG 1000000
+rng get uniform time 0.012 mean 0.499806 stddev 0.2887
+rand() get uniform time 0.013 mean 0.50003 stddev 0.288526
+generated normal 0.135 mean 0.000684646 stddev 1.00001
+rng Normal time 0.085 mean 0.000477835 stddev 0.999851
+rng stored normal accessed with uniform 0.006 mean 0.000477835 stddev 0.999851
+</pre>
+
+Speed test: note, with optimizations John's uniform was faster so I used it for the cached normal approach
+<pre>
+Mark-Essels-iMac:proj messel$ ./testRNG 100000000
+rng get uniform time 1.030
+rand() get uniform time 1.178
+generated normal 14.099
+rng Normal time 8.393
+rng stored normal accessed with uniform 0.486
+</pre>
+

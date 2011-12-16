@@ -4,6 +4,10 @@
 #include "Fptr.h"
 #include "mArray.h"
 
+// for clean functional programming in c++ 
+// see http://okmij.org/ftp/c++-digest/Lambda-CPP-more.html 
+// and http://okmij.org/ftp/c++-digest/Functional-Cpp.html
+
 using namespace std;
 
 vp curry(mArray<Fptr1> funcs,vp varg) {
